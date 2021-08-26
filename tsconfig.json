@@ -10,6 +10,33 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "paths": {
+      "@containers/*": [
+        "src/containers/*"
+      ],
+
+      // #region index
+      "@constants": [
+        "src/constants/index"
+      ],
+      "@configs": [
+        "src/configs/index"
+      ],
+      // #endregion 
+
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@src/*": [
+        "src/*"
+      ],
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   }
 }

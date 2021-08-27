@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -42,6 +42,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Logger],
 })
 export class AppModule {}

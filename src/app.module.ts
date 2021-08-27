@@ -11,6 +11,12 @@ import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TestModule } from './containers/test/test.module';
 
+// GUARD
+import { APP_GUARD } from '@nestjs/core';
+
+// Throttler
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -41,9 +47,21 @@ import { TestModule } from './containers/test/test.module';
         configService.get('database'),
       inject: [ConfigService],
     }),
+    // ThrottlerModule.forRoot({
+    //   // 1초당 10번 요청 가능
+    //   ttl: 1,
+    //   limit: 10,
+    // }),
     TestModule,
   ],
   controllers: [AppController],
-  providers: [AppService, Logger],
+  providers: [
+    AppService,
+    Logger,
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: ThrottlerGuard,
+    // },
+  ],
 })
 export class AppModule {}

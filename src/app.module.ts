@@ -9,6 +9,7 @@ import * as Joi from 'joi';
 
 // TypeORM
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TestModule } from './containers/test/test.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         configService.get('database'),
       inject: [ConfigService],
     }),
+    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService, Logger],
